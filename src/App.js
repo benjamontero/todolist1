@@ -1,24 +1,22 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, { useState } from 'react';
 import './App.css';
+import Form from './components/Form';
+import List from './components/List';
+
 
 function App() {
+  const [tareas, setTareas] = useState([]);
+
+  const actualizarTareas = (tarea) => {
+    setTareas([...tareas, tarea])
+   };
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
+      <p>
+        Todo List
         </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Form actualizarTareas={actualizarTareas}/>
+      <List tareas={tareas} /> 
     </div>
   );
 }
